@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <fstream>
 
 // Vector arrays of all the words that will be used to create website names.
 std::vector<std::string> prefixes = {"Best ", "Excellent", "Awesome", "Great", "Good", "Mediocre", "Poor", "Terrible", "Horrible"};
@@ -31,6 +32,7 @@ int main(){
         }
     }
     */
+    
     std::cout << "Number of prefixes: " << prefixes.size() << std::endl;
     std::cout << "Number of subjects: " << subjects.size() << std::endl;
     std::cout << "Number of suffixes: " << suffixes.size() << std::endl;
