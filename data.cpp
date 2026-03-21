@@ -5,9 +5,9 @@
 #include <fstream>
 
 // Vector arrays of all the words that will be used to create website names.
-std::vector<std::string> prefixes = {"Best ", "Excellent", "Awesome", "Great", "Good", "Mediocre", "Poor", "Terrible", "Horrible"};
-std::vector<std::string> subjects = {""};
-std::vector<std::string> suffixes = {"", "for programmers", "for grandma", "for mom", "for dad", "for grandpa", "for when you're sad", "for when you're happy", "for cats", "for dogs"};
+std::vector<std::string> prefixes = {};
+std::vector<std::string> subjects = {};
+std::vector<std::string> suffixes = {""};
 
 // Function for generating the name of a website. Need to combine multiple words to created 2^32 combinations.
 std::string getName(){
@@ -16,7 +16,43 @@ std::string getName(){
 };
 
 int main(){
-    /*
+    // Loading nounslist.txt
+    std::fstream inFS;
+    inFS.open("./nounlist.txt");
+    std::string x;
+    // Adding nouns to suffixes vector.
+    while(!inFS.eof()){
+        std::getline(inFS, x, '\n');
+        suffixes.push_back(x);
+    }
+    // Remove ghost suffix.
+    suffixes.pop_back();
+    // Closing nounslist.txt
+    inFS.close();
+    
+    // Loading morenouns.txt
+    inFS.open("./morenouns.txt");
+    // Adding nouns to subjects vector.
+    while(!inFS.eof()){
+        std::getline(inFS, x, '\n');
+        subjects.push_back(x);
+    }
+    // Removing ghost subject.
+    subjects.pop_back();
+    inFS.close();
+
+    // Loading adjectives.txt
+    inFS.open("./adjectives.txt");
+    // Adding adjectives to prefixes vector.
+    while(!inFS.eof()){
+        std::getline(inFS, x, '\n');
+        prefixes.push_back(x);
+    }
+    // Removing ghost prefix.
+    prefixes.pop_back();
+    inFS.close();
+
+    
     // Loop for creating IPv4 address.
     std::stringstream IP;
     for(int i = 0; i < 9; i++){ 
@@ -25,17 +61,12 @@ int main(){
                 for(int l = 0; l < 25; l++){
                     IP << i << '.' << j << '.' << k << '.' << l;
                     std::string str = IP.str();
-                    std::cout << str << " " << getName() << std::endl;  
+                    std::cout << str << " \"" << getName() << "\"" << std::endl;  
                     IP.str("");    
                 }
             }
         }
     }
-    */
     
-    std::cout << "Number of prefixes: " << prefixes.size() << std::endl;
-    std::cout << "Number of subjects: " << subjects.size() << std::endl;
-    std::cout << "Number of suffixes: " << suffixes.size() << std::endl;
-    std::cout << "Total number of combinations: " << prefixes.size() * subjects.size() * suffixes.size() << std::endl;
     return 0;
 }
