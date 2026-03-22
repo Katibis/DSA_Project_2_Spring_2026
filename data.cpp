@@ -1,3 +1,6 @@
+// WARNING: DO NOT RUN THIS CODE UNLESS NECESSARY.
+// IT TOOK MY COMPUTER 5 MINUTES TO CREATE 5 MILLION LINES AND THIS CODE WILL RUN UNTIL 4 BILLION LINES ARE CREATED.
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -9,13 +12,13 @@ std::vector<std::string> prefixes = {};
 std::vector<std::string> subjects = {};
 std::vector<std::string> suffixes = {""};
 
-std::vector<std::string>::iterator first = prefixes.begin();
-std::vector<std::string>::iterator second = subjects.begin();
-std::vector<std::string>::iterator third = suffixes.begin();
+
+int count = 0;
+
 
 // Function for generating the name of a website. Need to combine multiple words to created 2^32 combinations.
-std::string getName(){
-    
+std::string getName(std::vector<std::string>::iterator first, std::vector<std::string>::iterator second, std::vector<std::string>::iterator third){
+    count++;
     return *first + " " + *second + " " + *third;
 };
 
@@ -56,21 +59,53 @@ int main(){
     prefixes.pop_back();
     inFS.close();
 
+    // Intialize iterators for use
+    std::vector<std::string>::iterator first = prefixes.begin();
+    std::vector<std::string>::iterator second = subjects.begin();
+    std::vector<std::string>::iterator third = suffixes.begin();
     
+    // Create file to write data
+    std::ofstream out ("data.txt", std::ofstream::out);
+
     // Loop for creating IPv4 address.
     std::stringstream IP;
-    for(int i = 0; i < 9; i++){ 
-        for(int j = 0; j < 9; j++){
-            for(int k = 0; k < 9; k++){
-                for(int l = 0; l < 25; l++){
+    for(int i = 0; i < 1; i++){ 
+        for(int j = 0; j < 8; j++){
+            for(int k = 0; k < 256; k++){
+                for(int l = 0; l < 256; l++){
                     IP << i << '.' << j << '.' << k << '.' << l;
                     std::string str = IP.str();
-                    std::cout << str << " \"" << getName() << "\"" << std::endl;  
+                    // Turn all the information into one line of website data.
+                    std::string output = str + " \"" + getName(first, second, third) + "\"\n";
+                    // Write the data to the file.
+                    out << output.c_str();
+                    // For keeping track of progress.
+                    std::cout << count << std::endl;
+                    third++;
+                    if(third == suffixes.end()){
+                        third = suffixes.begin();
+                        second++;
+                    }
+                    if(count % 120 == 0){
+                        second+= 1;
+                    }
+                    if(second == subjects.end()){
+                        second = subjects.begin();
+                        first++;
+                    }
+                    if(count % 1234 == 0){
+                        first++;
+                    }
+                    if(first == prefixes.end()){
+                        first = prefixes.begin();
+                    }
                     IP.str("");    
                 }
             }
         }
     }
+    
+    
     
     return 0;
 }
