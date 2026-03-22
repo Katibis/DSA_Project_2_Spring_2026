@@ -9,10 +9,14 @@ std::vector<std::string> prefixes = {};
 std::vector<std::string> subjects = {};
 std::vector<std::string> suffixes = {""};
 
+std::vector<std::string>::iterator first = prefixes.begin();
+std::vector<std::string>::iterator second = subjects.begin();
+std::vector<std::string>::iterator third = suffixes.begin();
+
 // Function for generating the name of a website. Need to combine multiple words to created 2^32 combinations.
 std::string getName(){
     
-    return "";
+    return *first + " " + *second + " " + *third;
 };
 
 int main(){
