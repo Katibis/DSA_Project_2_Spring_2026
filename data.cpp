@@ -69,7 +69,7 @@ int main(){
 
     // Loop for creating IPv4 address.
     std::stringstream IP;
-    for(int i = 0; i < 1; i++){ 
+    for(int i = 0; i < 2; i++){ 
         for(int j = 0; j < 8; j++){
             for(int k = 0; k < 256; k++){
                 for(int l = 0; l < 256; l++){
