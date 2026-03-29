@@ -46,6 +46,7 @@ void Search::loadData() {
  * @param s
  * @return Vector of strings separated from larger string
  */
+// Private
 vector<string> Search::splitWords(const string& s) const {
     vector<string> words;
     string word;
@@ -69,6 +70,7 @@ vector<string> Search::splitWords(const string& s) const {
  * @param word
  * @param index
  */
+// Private
 void Search::insertWord(const string& word, int index) {
     TrieNode* node = root;
     for (char c : word) {
@@ -79,6 +81,7 @@ void Search::insertWord(const string& word, int index) {
     node->websiteIndices.push_back(index);
 }
 
+// Private
 vector<int> Search::lookup(const string& word) const {
     const TrieNode* node = root;
     for (char c : word) {

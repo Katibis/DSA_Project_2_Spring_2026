@@ -1,6 +1,6 @@
 <H1> COP3530 - Project 2 </h1>
 
-Hello, this is the respository for Samy Katibi's, Antonio's and Richard's DSA Project 2. Please run the main.cpp file to try the program we created.
+Hello, this is the respository for Samy Katibi's, Antonio Vega's and Richard Shiau's DSA Project 2. Please run the main.cpp file to try the program we created.
 
 Other files are either used for the main program or are just proof of our work on this project.
 
