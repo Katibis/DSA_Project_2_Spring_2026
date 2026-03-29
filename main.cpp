@@ -3,7 +3,7 @@
 
 
 int main(){
-    std::cout << "Welcome to Gem search. Since this is your first time running the program, please wait a few seconds for the functions to initialize." << std::endl;
+    std::cout << "Welcome to Gem search. Since this is the first time running the program, please wait a few seconds for the functions to initialize." << std::endl;
     std::string query;
     Search s = Search();
     s.loadData();
@@ -22,13 +22,11 @@ int main(){
         }
         results = s.getTopSites_Block(query);
         percentages = s.getTopScores_Block(query);
-        for(auto x : results){
-            std::cout << "Result: " << x << std::endl;
+        std::cout << "Results:  Name:            Percentage Match with query:" << std::endl;
+        for(int j = 0; j < 10; j++){
+            std::cout << results[j] << " ----------- " << percentages[j] << "%" << std::endl;
         }
-        for(auto y : percentages){
-            std::cout << "Percentage match: " << y << std::endl;
-        }
-        std::cout << "Size of results: " << results.size() << " Size of Percentages: " << percentages.size() << std::endl;
+        
     }
     return 0;
 }
