@@ -1,3 +1,9 @@
+/*
+ * Command-line interface to take search query, compare it to data processed by Search class,
+ * and present the results to the user.
+ * Coded by Samy Katibi.
+ */
+
 #include <iostream>
 #include "search.cpp"
 

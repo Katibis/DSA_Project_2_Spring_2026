@@ -1,3 +1,8 @@
+/*
+ * RNG program to create a list of websites and export it as a text file,
+ * via randomly-generated IP addresses and lists of nouns sourced from the internet.
+ * Coded by Samy Katibi.
+ */
 // WARNING: DO NOT RUN THIS CODE UNLESS NECESSARY.
 // IT WILL TAKE SOME TIME TO RUN THIS CODE AND CREATE THE DATA.TXT FILE.
 
