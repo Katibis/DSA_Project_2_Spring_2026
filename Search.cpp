@@ -1,5 +1,6 @@
-/**
- * Source file for functions defined in Search.h
+/*
+ * Definitions of functions declared in Search.h.
+ * Coded by Antonio Vega, with assistance from Samy Katibi.
  */
 
 #include "Search.h"
@@ -74,9 +75,9 @@ vector<string> Search::splitWords(const string& s) const {
 void Search::insertWord(const string& word, int index) {
     TrieNode* node = root;
     for (char c : word) {
-        if (!node->children.count(&c))
-            node->children[&c] = new TrieNode();
-        node = node->children[&c];
+        if (!node->children.count(c))
+            node->children[c] = new TrieNode();
+        node = node->children[c];
     }
     node->websiteIndices.push_back(index);
 }
@@ -85,9 +86,9 @@ void Search::insertWord(const string& word, int index) {
 vector<int> Search::lookup(const string& word) const {
     const TrieNode* node = root;
     for (char c : word) {
-        if (!node->children.count(&c))
+        if (!node->children.count(c))
             return {};
-        node = node->children.at(&c);
+        node = node->children.at(c);
     }
     return node->websiteIndices;
 }
